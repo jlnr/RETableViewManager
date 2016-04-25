@@ -42,9 +42,7 @@
 #pragma mark Lifecycle
 
 - (void)dealloc {
-    if (_item != nil) {
-        [_item removeObserver:self forKeyPath:@"enabled"];
-    }
+    [_item removeObserver:self forKeyPath:@"enabled"];
 }
 
 - (void)cellDidLoad
@@ -96,12 +94,8 @@
 
 - (void)setItem:(REBoolItem *)item
 {
-    if (_item != nil) {
-        [_item removeObserver:self forKeyPath:@"enabled"];
-    }
-
+    [_item removeObserver:self forKeyPath:@"enabled"];
     _item = item;
-
     [_item addObserver:self forKeyPath:@"enabled" options:NSKeyValueObservingOptionNew context:NULL];
 }
 
@@ -117,7 +111,7 @@
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
 {
     if ([object isKindOfClass:[REBoolItem class]] && [keyPath isEqualToString:@"enabled"]) {
-        BOOL newValue = [[change objectForKey: NSKeyValueChangeNewKey] boolValue];
+        BOOL newValue = [change[NSKeyValueChangeNewKey] boolValue];
         
         self.enabled = newValue;
     }
@@ -128,7 +122,7 @@
 
 - (void)switchValueDidChange:(UISwitch *)switchView
 {
-    self.item.value = switchView.isOn;
+    self.item.value = switchView.on;
     if (self.item.switchValueChangeHandler)
         self.item.switchValueChangeHandler(self.item);
 }
