@@ -10,6 +10,8 @@
 
 @implementation XIBTestCell
 
+@dynamic item;
+
 - (void)cellWillAppear
 {
     [super cellWillAppear];

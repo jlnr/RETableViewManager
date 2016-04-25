@@ -16,6 +16,8 @@
 
 @implementation ListImageCell
 
+@dynamic item;
+
 + (CGFloat)heightWithItem:(NSObject *)item tableViewManager:(RETableViewManager *)tableViewManager
 {
     return 306;

@@ -19,6 +19,8 @@ static const CGFloat kVerticalMargin = 10.0;
 
 @implementation MultilineTextCell
 
+@dynamic item;
+
 + (CGFloat)heightWithItem:(MultilineTextItem *)item tableViewManager:(RETableViewManager *)tableViewManager
 {
     CGFloat horizontalMargin = kHorizontalMargin;
