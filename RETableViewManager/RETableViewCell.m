@@ -170,11 +170,8 @@
 
 - (void)layoutDetailView:(UIView *)view minimumWidth:(CGFloat)minimumWidth
 {
-    CGFloat cellOffset = 10.0;
+    CGFloat cellOffset = self.textLabel.frame.origin.x;
     CGFloat fieldOffset = 10.0;
-    
-    if (self.section.style.contentViewMargin <= 0)
-        cellOffset += 5.0;
     
     UIFont *font = self.textLabel.font;
     
